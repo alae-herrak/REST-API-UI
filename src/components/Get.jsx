@@ -25,10 +25,12 @@ const Get = () => {
         setData(allData.data);
         break;
       case "byId":
-        const dataById = await axios.get(
-          `http://localhost:${port}/${infoType}/${searchId}`
-        );
-        setData(dataById.data);
+        if (searchId.trim() != "") {
+          const dataById = await axios.get(
+            `http://localhost:${port}/${infoType}/${searchId}`
+          );
+          setData(dataById.data);
+        }
         break;
     }
   };
@@ -42,6 +44,7 @@ const Get = () => {
             switch (e.target.value) {
               case "all":
                 setSearchType("all");
+                setSearchId("");
                 break;
               case "byId":
                 setSearchType("byId");
@@ -54,6 +57,7 @@ const Get = () => {
         </select>
         <input
           type="text"
+          value={searchId}
           disabled={searchType === "all" ? "disabled" : ""}
           onChange={(e) => {
             setSearchId(e.target.value);
