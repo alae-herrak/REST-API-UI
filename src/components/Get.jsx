@@ -9,12 +9,12 @@ const Get = () => {
   const port = useSelector((state) => state.port.port);
   const infoType = useSelector((state) => state.infoType.infoType);
   const [searchType, setSearchType] = useState("all");
-  const [searchId, setSearchId] = useState();
+  const [searchId, setSearchId] = useState("");
   const [data, setData] = useState([]);
 
   const jsonStyle = {
-    propertyStyle: { color: "red" },
-    stringStyle: { color: "green" },
+    propertyStyle: { color: "darkgray" },
+    stringStyle: { color: "white    " },
     numberStyle: { color: "darkorange" },
   };
 
