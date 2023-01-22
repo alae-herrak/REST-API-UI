@@ -8,7 +8,6 @@ import { useState } from "react";
 const Configuration = () => {
   const port = useSelector((state) => state.port.port);
   const infoType = useSelector((state) => state.infoType.infoType);
-  const isConnected = useSelector((state) => state.isConnected.isConnected);
   const dispatch = useDispatch();
   const [connexionMsg, setConnexionMsg] = useState("");
 
