@@ -1,0 +1,42 @@
+import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { setPort } from "../redux/portSlice";
+import { setInfoType } from "../redux/infoTypeSlice";
+import { useState } from "react";
+
+const Configuration = () => {
+  const port = useSelector((state) => state.port.port);
+  const infoType = useSelector((state) => state.infoType.infoType);
+  const dispatch = useDispatch();
+  const [connexionMsg, setConnexionMsg] = useState("");
+
+  const handleConnect = async (e) => {
+    try {
+      await axios
+        .get(`http://localhost:${port}/${infoType}`)
+        .then(setConnexionMsg("Connected to API"));
+    } catch (error) {
+      setConnexionMsg(`Failed to connect to API: ${error}`);
+    }
+  };
+
+  return (
+    <div className="config">
+      <select onChange={(e) => dispatch(setInfoType(e.target.value))}>
+        <option value="users">users</option>
+      </select>
+      <input
+        type="text"
+        defaultValue={port}
+        placeholder="Port"
+        onChange={(e) => {
+          dispatch(setPort(e.target.value));
+        }}
+      />
+      <button onClick={handleConnect}>Connect</button>
+      <div className="config-port-msg">{connexionMsg}</div>
+    </div>
+  );
+};
+
+export default Configuration;
