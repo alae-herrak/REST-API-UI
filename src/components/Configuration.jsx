@@ -14,7 +14,9 @@ const Configuration = () => {
     try {
       await axios
         .get(`http://localhost:${port}/${infoType}`)
-        .then(setConnexionMsg("Connected to API"));
+        .then(
+          (res) => res.status === 200 && setConnexionMsg("Connected to API")
+        );
     } catch (error) {
       setConnexionMsg(`Failed to connect to API: ${error}`);
     }
@@ -22,18 +24,21 @@ const Configuration = () => {
 
   return (
     <div className="config">
-      <select onChange={(e) => dispatch(setInfoType(e.target.value))}>
-        <option value="users">users</option>
-      </select>
-      <input
-        type="text"
-        defaultValue={port}
-        placeholder="Port"
-        onChange={(e) => {
-          dispatch(setPort(e.target.value));
-        }}
-      />
-      <button onClick={handleConnect}>Connect</button>
+      <div>
+        <select onChange={(e) => dispatch(setInfoType(e.target.value))}>
+          <option value="users">users</option>
+        </select>
+        <input
+          type="text"
+          defaultValue={port}
+          placeholder="Port"
+          onChange={(e) => {
+            dispatch(setPort(e.target.value));
+          }}
+        />
+        <button onClick={handleConnect}>Connect</button>
+      </div>
+
       <div className="config-port-msg">{connexionMsg}</div>
     </div>
   );
