@@ -10,8 +10,11 @@ const isConnectedSlice = createSlice({
     connect: (state) => {
       state.isConnected = true;
     },
+    disconnect: (state) => {
+      state.isConnected = false;
+    },
   },
 });
 
 export default isConnectedSlice.reducer;
-export const { connect } = isConnectedSlice.actions;
+export const { connect, disconnect } = isConnectedSlice.actions;

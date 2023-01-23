@@ -36,9 +36,9 @@ const Get = () => {
   };
 
   return (
-    <div className="get">
+    <div className="request">
       {isConnected ? "" : <Navigate to="/" />}
-      <div className="get-form">
+      <div className="request-form">
         <select
           onChange={(e) => {
             switch (e.target.value) {
@@ -65,7 +65,7 @@ const Get = () => {
         />
         <button onClick={() => handleGet(searchType, searchId)}>Send</button>
       </div>
-      <div className="get-show">
+      <div className="request-show">
         {data.length === 0 ? (
           ""
         ) : (

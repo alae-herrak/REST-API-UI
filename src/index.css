@@ -44,44 +44,44 @@ body {
 .config button {
   padding: 15px 20px;
 }
-/* get */
-.get {
+/* request */
+.request {
   width: 100%;
   height: calc(100vh - 60px);
   display: flex;
 }
-.get-form {
+.request-form {
   width: 30%;
   height: 100%;
   padding: 2rem;
   background-color: rgb(71, 71, 85);
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
+  gap: .5rem;
 }
-.get-form select,
-.get-form input {
+.request-form select,
+.request-form input {
   height: 50px;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   background-color: rgb(53, 53, 68);
   color: white;
   border: 1px solid white;
-  margin: 0 0.5rem;
 }
-.get-form input {
+.request-form input {
   background-color: rgb(100, 100, 122);
   color: white;
   width: 250px;
 }
-.get-form input:disabled {
+.request-form input:disabled {
   background-color: rgb(95, 95, 95);
 }
-.get-form input:disabled:hover{
+.request-form input:disabled:hover{
   cursor: not-allowed;
 }
-.get-form button {
+.request-form button {
   height: 50px;
-  margin: 0 0.5rem;
   width: 100px;
   border-radius: 5px;
   border: none;
@@ -89,10 +89,10 @@ body {
   font-size: 1rem;
   cursor: pointer;
 }
-.get-form button:hover {
+.request-form button:hover {
   opacity: 0.85;
 }
-.get-show {
+.request-show {
   width: 70%;
   padding: 2rem;
   overflow: scroll;

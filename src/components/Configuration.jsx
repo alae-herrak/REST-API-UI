@@ -2,7 +2,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setPort } from "../redux/portSlice";
 import { setInfoType } from "../redux/infoTypeSlice";
-import { connect } from "../redux/isConnected";
+import { connect, disconnect } from "../redux/isConnected";
 import { useState } from "react";
 
 const Configuration = () => {
@@ -21,6 +21,7 @@ const Configuration = () => {
       });
     } catch (error) {
       setConnexionMsg(`Failed to connect to API: ${error}`);
+      dispatch(disconnect());
     }
   };
 
