@@ -113,3 +113,14 @@ body {
   outline: 1px solid rgb(33, 33, 36);
   color: white;
 }
+.request-body input {
+  width: 60%;
+  height: 2rem;
+  background-color: rgb(221, 225, 230);
+  color: rgb(41, 41, 53);
+}
+.request-body button {
+  width: 20%;
+  height: 2rem;
+  background-color: rgb(130, 130, 141);
+}
