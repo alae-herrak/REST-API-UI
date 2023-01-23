@@ -6,7 +6,6 @@ import { connect, disconnect } from "../redux/isConnected";
 import { useState } from "react";
 
 const Configuration = () => {
-  const isConnected = useSelector((state) => state.isConnected.isConnected);
   const port = useSelector((state) => state.port.port);
   const infoType = useSelector((state) => state.infoType.infoType);
   const dispatch = useDispatch();
@@ -43,7 +42,7 @@ const Configuration = () => {
         <button onClick={handleConnect}>Connect</button>
       </div>
 
-      <div className="config-port-msg">{isConnected ? connexionMsg : ""}</div>
+      <div className="config-port-msg">{connexionMsg}</div>
     </div>
   );
 };
