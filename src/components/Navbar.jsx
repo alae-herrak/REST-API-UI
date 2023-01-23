@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { disconnect } from "../redux/isConnected";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const isConnected = useSelector((state) => state.isConnected.isConnected);
 
   return (
@@ -11,28 +13,29 @@ const Navbar = () => {
         <Link to="/">Configuration</Link>
         <Link
           to={isConnected ? "/get" : null}
-          style={isConnected ? {} : { color: "grey" }}
+          className={!isConnected && 'disabled'}
         >
           Get
         </Link>
         <Link
           to={isConnected ? "/post" : null}
-          style={isConnected ? {} : { color: "grey" }}
+          className={!isConnected && 'disabled'}
         >
           Post
         </Link>
         <Link
           to={isConnected ? "/update" : null}
-          style={isConnected ? {} : { color: "grey" }}
+          className={!isConnected && 'disabled'}
         >
           Update
         </Link>
         <Link
           to={isConnected ? "/delete" : null}
-          style={isConnected ? {} : { color: "grey" }}
+          className={!isConnected && 'disabled'}
         >
           Delete
         </Link>
+        <button className={!isConnected && 'disabled'} onClick={() => dispatch(disconnect())}>Disconnect</button>
       </nav>
     </div>
   );
