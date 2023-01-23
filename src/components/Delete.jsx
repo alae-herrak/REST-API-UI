@@ -28,20 +28,15 @@ const Get = () => {
     }
   };
 
-  const handleUpdate = async (postBody) => {
-    if (postBody.trim() != "") {
-      await axios
-        .patch(
-          `http://localhost:${port}/${infoType}/${id}`,
-          JSON.parse(postBody)
-        )
-        .then((response) => {
-          setData(response.data);
-        })
-        .catch((error) => {
-          setData(error);
-        });
-    } else setData("no change");
+  const handleDelete = async (postBody) => {
+    await axios
+      .delete(`http://localhost:${port}/${infoType}/${id}`)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        setData(error);
+      });
   };
 
   return (
@@ -67,7 +62,7 @@ const Get = () => {
           <button
             disabled={info == "" ? "disabled" : ""}
             onClick={() => {
-              handleUpdate(postBody);
+              handleDelete(postBody);
             }}
           >
             Send
@@ -79,9 +74,9 @@ const Get = () => {
             placeholder="id"
             onChange={(e) => setId(e.target.value)}
           />
-          <button onClick={() => handleGetInfo(id)}>Get info</button>
+          <button onClick={(e) => handleGetInfo(id)}>Get info</button>
           <textarea
-            disabled={info == "" ? "disabled" : ""}
+            disabled="disabled"
             defaultValue={info}
             spellCheck="false"
             onChange={(e) => {

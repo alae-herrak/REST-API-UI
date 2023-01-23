@@ -10,7 +10,7 @@ const Get = () => {
   const infoType = useSelector((state) => state.infoType.infoType);
   const [searchType, setSearchType] = useState("all");
   const [searchId, setSearchId] = useState("");
-  const [data, setData] = useState([]);
+  const [data, setData] = useState('');
 
   const jsonStyle = {
     propertyStyle: { color: "darkgray" },
@@ -26,9 +26,9 @@ const Get = () => {
         break;
       case "byId":
         if (searchId.trim() != "") {
-          const dataById = await axios.get(
-            `http://localhost:${port}/${infoType}/${searchId}`
-          );
+          const dataById = await axios
+            .get(`http://localhost:${port}/${infoType}/${searchId}`)
+            .catch((err) => setData(err));
           setData(dataById.data);
         }
         break;
@@ -66,7 +66,7 @@ const Get = () => {
         <button onClick={() => handleGet(searchType, searchId)}>Send</button>
       </div>
       <div className="request-show">
-        {data.length === 0 ? (
+        {!data ? (
           ""
         ) : (
           <JsonFormatter
