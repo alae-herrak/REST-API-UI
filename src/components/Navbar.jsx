@@ -13,29 +13,29 @@ const Navbar = () => {
         <Link to="/">Configuration</Link>
         <Link
           to={isConnected ? "/get" : null}
-          className={!isConnected && 'disabled'}
+          className={!isConnected?'disabled':''}
         >
           Get
         </Link>
         <Link
           to={isConnected ? "/post" : null}
-          className={!isConnected && 'disabled'}
+          className={!isConnected?'disabled':''}
         >
           Post
         </Link>
         <Link
           to={isConnected ? "/update" : null}
-          className={!isConnected && 'disabled'}
+          className={!isConnected?'disabled':''}
         >
           Update
         </Link>
         <Link
           to={isConnected ? "/delete" : null}
-          className={!isConnected && 'disabled'}
+          className={!isConnected?'disabled':''}
         >
           Delete
         </Link>
-        <button className={!isConnected && 'disabled'} onClick={() => dispatch(disconnect())}>Disconnect</button>
+        <button className={!isConnected?'disabled':''} onClick={() => dispatch(disconnect())}>Disconnect</button>
       </nav>
     </div>
   );

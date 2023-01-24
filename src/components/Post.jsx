@@ -61,7 +61,9 @@ const Get = () => {
         <div className="request-body">
           <textarea
             defaultValue={
-              '{\n  "fullName":"",\n  "email": "",\n  "phoneNumber":""\n}'
+              infoType === "users"
+                ? '{\n  "fullName":"",\n  "email": "",\n  "phoneNumber":""\n}'
+                : '{\n  "title":"",\n  "description": ""\n}'
             }
             spellCheck="false"
             onChange={(e) => {

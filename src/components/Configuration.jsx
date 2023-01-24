@@ -30,6 +30,7 @@ const Configuration = () => {
       <div>
         <select onChange={(e) => dispatch(setInfoType(e.target.value))}>
           <option value="users">users</option>
+          <option value="posts">posts</option>
         </select>
         <input
           type="text"
